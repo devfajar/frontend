@@ -5,12 +5,12 @@ import Layout from '../../components/auth/Layout'
 
 const LoginPage = () => {
   return (
-    <Layout>
+    <Layout title="Login">
       <Header
         heading="Login to your account"
         paragraph="Don't have an account yet? "
         linkName="Signup"
-        linkUrl="/signup"
+        linkUrl="/register"
       />
       <Login />
     </Layout>
