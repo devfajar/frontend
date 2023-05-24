@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 
-const Layout = (props) => {
+const FormLayout = (props) => {
   return (
     <>
       <Head>
@@ -16,4 +16,4 @@ const Layout = (props) => {
   )
 }
 
-export default Layout
+export default FormLayout

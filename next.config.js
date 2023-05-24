@@ -7,14 +7,18 @@ const nextConfig = {
   },
   async rewrites() {
     return [
-      {
-        source: '/login',
-        destination: '/auth/LoginPage',
-      },
-      {
-        source: '/register',
-        destination: '/auth/RegisterPage',
-      },
+      // {
+      //   source: '/login',
+      //   destination: '/auth/LoginPage',
+      // },
+      // {
+      //   source: '/register',
+      //   destination: '/auth/RegisterPage',
+      // },
+      // {
+      //   source: '/dashboard',
+      //   destination: '/Dashboard',
+      // }
     ]
   },
 }

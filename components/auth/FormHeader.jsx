@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from "next/link";
 
-const Header = ({ heading, paragraph, linkName,linkUrl="#" }) => {
+const FormHeader = ({ heading, paragraph, linkName,linkUrl="#" }) => {
   return (
     <div className="mb-10">
     <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
@@ -17,4 +17,4 @@ const Header = ({ heading, paragraph, linkName,linkUrl="#" }) => {
   )
 }
 
-export default Header
+export default FormHeader

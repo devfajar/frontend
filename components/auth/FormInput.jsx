@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Input = ({ handleChange, value, labelText, labelFor, id, name, type, isRequired=false, placeholder, customClass }) => {
+const FormInput = ({ handleChange, value, labelText, labelFor, id, name, type, isRequired=false, placeholder, customClass }) => {
     const fixedInputClass="rounded-md appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
 
     return (
@@ -22,4 +22,4 @@ const Input = ({ handleChange, value, labelText, labelFor, id, name, type, isReq
     )
 }
 
-export default Input
+export default FormInput

@@ -1,19 +1,19 @@
 import React from 'react'
-import Register from '../../components/auth/Register'
-import Header from '../../components/auth/Header'
-import Layout from '../../components/auth/Layout'
+import FormHeader from '../components/auth/FormHeader'
+import FormLayout from '../components/auth/FormLayout'
+import Register from '../components/auth/Register'
 
 const RegisterPage = () => {
   return (
-    <Layout title="Register">
-      <Header
+    <FormLayout title="Register">
+      <FormHeader
         heading="Signup to create an account"
         paragraph="Already have an account? "
         linkName="Login"
         linkUrl="/login"
       />
       <Register/>
-    </Layout>    
+    </FormLayout>    
   )
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormAction = ({ handleSubmit, type='Button', action='submit', text }) => {
+const FormActionButton = ({ handleSubmit, type='Button', action='submit', text }) => {
 
     return (
         <>
@@ -21,4 +21,4 @@ const FormAction = ({ handleSubmit, type='Button', action='submit', text }) => {
     )
 }
 
-export default FormAction
+export default FormActionButton
