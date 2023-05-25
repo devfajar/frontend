@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { signupFields } from '../constants/formFields'
+import { signupFields } from '../../constants/formFields'
 import FormInput from './FormInput'
 import FormActionButton from './FormActionButton'
 import Router from 'next/router'
