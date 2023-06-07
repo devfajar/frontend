@@ -1,68 +1,33 @@
-import React, { useState } from 'react'
-import Image from 'next/image'
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { BsArrowLeftCircle } from 'react-icons/bs'
-import Logo from '../public/logo.svg'
-import HamburgerButton from './HamburgerButton'
-import Menus from './sidebar/sidebarContent'
+import React, { forwardRef } from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { AiOutlineHome } from 'react-icons/ai'
 
-const Sidebar = () => {
-  const [open, setOpen] = useState(true)
-  const [mobileMenu, setMobileMenu] = useState(false)
-
-  const sidebarHandler = () => {
-    setOpen(!open)
-  }
-
-  const mobileHandler = () => {
-    setMobileMenu(false)
-  }
-  
-  const router = useRouter()
-
-  return (
-    <>
-      <div className={`${ open ? 'w-60' : 'w-fit'} hidden sm:block relative h-screen duration-300 bg-gray-100 p-5 dark:bg-slate-800`}>
-        <BsArrowLeftCircle className={`${ !open && 'rotate-180'} absolute text-3xl bg-white fill-slate-800  rounded-full cursor-pointer hrefp-9 -right-4 dark:fill-gray-400 dark:bg-gray-800`}
-          onClick={sidebarHandler}
-        />
-
-        <Link href='/'>
-          <div className={`flex ${open && 'gap-x-4'} items-center`}>
-            <Image width={40} height={40} src={Logo} alt='' className='pl-2' />
-            {open && (<span className='text-xl font-medium whitespace-nowrap dark:text-white'>New-geek</span>)}
-          </div>
-        </Link>
-
-        <ul className='pt-6'>
-          {Menus.map((menu, index) => (
-            <Link href={menu.path} key={index}>
-              <li className={`flex items-center gap-x-6 p-3 text-base font-normal rounded-lg cursor-pointer dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 ${menu.gap ? 'mt-9' : 'mt-2'} ${ router.pathname === menu.path && 'bg-gray-200 dark:bg-gray-700'}`}>
-                <span className='text-2xl'>{menu.src}</span>
-                <span className={`${!open && 'hidden'} origin-left duration-300 hover:block`}>{menu.title}</span>
-              </li>
-            </Link>
-          ))}
-        </ul>
-      </div>
-
-      {/* Mobile Menu */}
-      <div className="pt-3">
-        <HamburgerButton setMobileMenu={setMobileMenu} mobileMenu={mobileMenu}/>
-      </div>
-
-      <div className="sm:hidden">
-        <div className={`${mobileMenu ? 'flex' : 'hidden'} absolute z-50 flex-col items-center self-end py-8 mt-16 space-y-6 font-bold sm:w-auto left-6 right-6 dark:text-white  bg-gray-50 dark:bg-slate-800 drop-shadow md rounded-xl`}>
-          {Menus.map((menu, index) => (
-            <Link href={menu.path} key={index} onClick={mobileHandler}>
-              <span className={` ${router.pathname === menu.path && 'bg-gray-200 dark:bg-gray-700'} p-2 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700`}>{menu.title}</span>
-            </Link>
-          ))}
+const Sidebar = forwardRef(({ showNav }, ref) => {
+    const router = useRouter()
+    
+    return (
+        <div ref={ref} className='fixed w-56 h-full bg-white shadow-sm dark:shadow-sm dark:shadow-white dark:bg-gray-900 transition-all duration-[400ms]'>
+            <div className='flex justify-center mt-6 mb-14'>
+                <h1 className='uppercase text-2xl font-bold dark:text-white'>skripsi</h1>
+            </div>
+    
+            <div className='flex flex-col'>
+                <Link href='/'>
+                    <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${ router.pathname == '/' ? 'bg-orange-100 text-orange-500' : 'text-gray-400 hover:bg-orange-100 hover:text-orange-500' }`}>
+                        <div className='mr-2'>
+                            <AiOutlineHome className='h-5 w-5' />
+                        </div>
+                        <div>
+                            <p>Home</p>
+                        </div>
+                    </div>
+                </Link>
+            </div>
         </div>
-      </div>
-    </>
-  )
-}
+      )
+})
+
+Sidebar.displayName = 'Sidebar'
 
 export default Sidebar

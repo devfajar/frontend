@@ -1,40 +1,45 @@
-import React, { useState } from "react"
-import Link from "next/link"
-import foto from '../public/owi.jpg'
-import Image from 'next/image'
+import React, { Fragment, useState } from 'react'
+import Link from 'next/link'
+import { Menu, Transition } from '@headlessui/react'
+import { BsChevronDown } from 'react-icons/bs'
+import { BiLogOut } from 'react-icons/bi'
+import { AiOutlineSetting } from 'react-icons/ai'
+import { HiMenuAlt2 } from 'react-icons/hi'
+import DarkModeSwitch from './DarkModeSwitch'
 
-export default function Navbar() {
-    const Menus = ['Profile', 'Logout']
-    const [isOpen, setIsOpen] = useState(false)
-
-    const openHandler = () => {
-      setIsOpen(!isOpen)
-    }
-
+const Navbar = ({ showNav, setShowNav }) => {
     return (
-    <nav className='bg-gray-100 border-gray-200 px-2 py-2.5 rounded dark:bg-gray-800'>
-      <div className='container flex justify-between items-center mx-auto pt-3'>
-
-        <div className='flex items-center mx-auto'>
-          <span className='text-xl font-medium whitespace-nowrap dark:text-white'>Welcome</span>
+        <div className={`fixed w-full h-16 flex justify-between items-center transition-all duration-[400ms] ${ showNav ? "pl-56" : "" }`}>
+            <div className="pl-4 md:pl-16">
+                <HiMenuAlt2 className="h-8 w-8 text-gray-700 cursor-pointer dark:text-white" onClick={() => setShowNav(!showNav)} />
+            </div>
+            <div className="flex items-center pr-4 md:pr-16">
+                <DarkModeSwitch className="mr-8" />
+                <Menu as="div" className="relative inline-block text-left ml-5">
+                    <Menu.Button className="inline-flex w-full justify-center items-center">
+                        <span className="hidden md:block font-medium text-gray-700 dark:text-white">Nugik</span>
+                        <BsChevronDown className="ml-2 h-4 w-4 text-gray-700 dark:text-white" />
+                    </Menu.Button>
+                    <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform scale-95" enterTo="transform scale-100" leave="transition ease-in duration=75" leaveFrom="transform scale-100" leaveTo="transform scale-95">
+                        <Menu.Items className="absolute right-0 w-56 z-50 mt-2 origin-top-right bg-white rounded shadow-sm">
+                            <div className="p-1">
+                                <Menu.Item>
+                                    <Link href="#" className="flex hover:bg-orange-500 hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center">
+                                        <AiOutlineSetting className="h-4 w-4 mr-2" />Settings
+                                    </Link>
+                                </Menu.Item>
+                                <Menu.Item>
+                                    <Link href="#" className="flex hover:bg-orange-500 hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center">
+                                        <BiLogOut className="h-4 w-4 mr-2" />Logout
+                                    </Link>
+                                </Menu.Item>
+                            </div>
+                        </Menu.Items>
+                    </Transition>
+                </Menu>
+            </div>
         </div>
-
-        <div className='flex items-center justify-end pr-4'>
-          <div className="relative">
-            <Image src={foto} width={40} height={40} alt="foto profile" className="h-10 w-10 object-cover border-1 border-gray-400 rounded-full cursor-pointer" onClick={openHandler} />
-            { isOpen && (
-                <div className="bg-white p-4 w-40 shadow-lg rounded-sm absolute -left-28 top-11">
-                  <ul>
-                    {Menus.map((menu) => (
-                      <li key={menu} className="p-2 text-lg cursor-pointer rounded hover:bg-blue-100">{menu}</li>
-                    ))}
-                  </ul>
-                </div>
-            )}
-          </div>
-        </div>
-
-      </div>
-    </nav>
-    );
+    )
 }
+
+export default Navbar
