@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { AiOutlineHome } from 'react-icons/ai'
+import { FaUserGraduate } from 'react-icons/fa'
 
 const Sidebar = forwardRef(({ showNav }, ref) => {
     const router = useRouter()
@@ -20,6 +21,16 @@ const Sidebar = forwardRef(({ showNav }, ref) => {
                         </div>
                         <div>
                             <p>Home</p>
+                        </div>
+                    </div>
+                </Link>
+                <Link href='/mahasiswa'>
+                    <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${ router.pathname == '/mahasiswa' ? 'bg-orange-100 text-orange-500' : 'text-gray-400 hover:bg-orange-100 hover:text-orange-500' }`}>
+                        <div className='mr-2'>
+                            <FaUserGraduate className='h-5 w-5' />
+                        </div>
+                        <div>
+                            <p>Mahasiswa</p>
                         </div>
                     </div>
                 </Link>

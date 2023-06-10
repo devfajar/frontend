@@ -1,12 +1,11 @@
 import '../styles/globals.css'
-import Layout from '../components/Layout'
+import MainLayout from '../components/MainLayout'
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-    
+  return (    
+    <MainLayout>
+      <Component {...pageProps} />    
+    </MainLayout>
   );
 }
 
